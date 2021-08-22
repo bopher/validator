@@ -107,7 +107,7 @@ func (v *validatorDriver) StructLocale(locale string, s interface{}) ErrorRespon
 	if err != nil {
 		return v.proccessStructValidation(locale, s, err)
 	}
-	return nil
+	return NewErrorResponse()
 }
 
 func (v *validatorDriver) Struct(s interface{}) ErrorResponse {
@@ -119,7 +119,7 @@ func (v *validatorDriver) StructExceptLocale(locale string, s interface{}, field
 	if err != nil {
 		return v.proccessStructValidation(locale, s, err)
 	}
-	return nil
+	return NewErrorResponse()
 }
 
 func (v *validatorDriver) StructExcept(s interface{}, fields ...string) ErrorResponse {
@@ -131,7 +131,7 @@ func (v *validatorDriver) StructPartialLocale(locale string, s interface{}, fiel
 	if err != nil {
 		return v.proccessStructValidation(locale, s, err)
 	}
-	return nil
+	return NewErrorResponse()
 }
 
 func (v *validatorDriver) StructPartial(s interface{}, fields ...string) ErrorResponse {
@@ -146,7 +146,7 @@ func (v *validatorDriver) VarLocale(locale string, params ValidatorParam, field 
 	if err != nil {
 		return v.proccessVarValidation(locale, params, messages, err)
 	}
-	return nil
+	return NewErrorResponse()
 }
 
 func (v *validatorDriver) Var(params ValidatorParam, field interface{}, tag string, messages map[string]string) ErrorResponse {
@@ -161,7 +161,7 @@ func (v *validatorDriver) VarWithValueLocale(locale string, params ValidatorPara
 	if err != nil {
 		return v.proccessVarValidation(locale, params, messages, err)
 	}
-	return nil
+	return NewErrorResponse()
 }
 
 func (v *validatorDriver) VarWithValue(params ValidatorParam, field interface{}, other interface{}, tag string, messages map[string]string) ErrorResponse {
