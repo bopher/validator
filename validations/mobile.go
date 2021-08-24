@@ -11,7 +11,7 @@ func mobileValidation(fl validator.FieldLevel) bool {
 
 // RegisterMobileValidation register validations with translations
 func RegisterMobileValidation(val v.Validator) {
-	val.AddValidation("mobile", identifierValidation)
+	val.AddValidation("mobile", mobileValidation)
 	val.AddTranslation("en", "mobile", "Must be a valid mobile")
 	val.AddTranslation("fa", "mobile", "شناسه وارد شده معتبر نیست")
 }

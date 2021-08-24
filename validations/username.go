@@ -11,7 +11,7 @@ func usernameValidation(fl validator.FieldLevel) bool {
 
 // RegisterUsernameValidation register validations with translations
 func RegisterUsernameValidation(val v.Validator) {
-	val.AddValidation("username", identifierValidation)
+	val.AddValidation("username", usernameValidation)
 	val.AddTranslation("en", "username", "Must be a valid username")
 	val.AddTranslation("fa", "username", "مقدار ورودی نمی تواند شامل کاراکترهای غیرمجاز باشد")
 }

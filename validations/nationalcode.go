@@ -11,7 +11,7 @@ func nationalCodeValidation(fl validator.FieldLevel) bool {
 
 // RegisterNationalCodeValidation register validations with translations
 func RegisterNationalCodeValidation(val v.Validator) {
-	val.AddValidation("nationalcode", identifierValidation)
+	val.AddValidation("nationalcode", nationalCodeValidation)
 	val.AddTranslation("en", "nationalcode", "Must be a valid national code")
 	val.AddTranslation("fa", "nationalcode", "کدملی وارد شده معتبر نیست")
 }

@@ -11,7 +11,7 @@ func postalCodeValidation(fl validator.FieldLevel) bool {
 
 // RegisterPostalCodeValidation register validations with translations
 func RegisterPostalCodeValidation(val v.Validator) {
-	val.AddValidation("postalcode", identifierValidation)
+	val.AddValidation("postalcode", postalCodeValidation)
 	val.AddTranslation("en", "postalcode", "Must be a valid postal-code")
 	val.AddTranslation("fa", "postalcode", "کد پستی وارد شده معتبر نیست")
 }
