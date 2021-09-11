@@ -88,6 +88,15 @@ Convert error response to string.
 String() string
 ```
 
+##### Messages
+
+Get error messages only without error key
+
+```go
+// Signature:
+Messages() map[string][]string
+```
+
 ##### MarshalJSON
 
 Convert error response to json.
