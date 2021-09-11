@@ -61,6 +61,18 @@ func (er *errorResponseDriver) String() string {
 	return fmt.Sprintf("%v", er.errors)
 }
 
+// Messages get error messages only without errors
+func (er *errorResponseDriver) Messages() map[string][]string {
+	var msg map[string][]string
+	for f, errs := range er.errors {
+		msg[f] = make([]string, 0)
+		for _, m := range errs {
+			msg[f] = append(msg[f], m)
+		}
+	}
+	return msg
+}
+
 // MarshalJSON convert to json
 func (er *errorResponseDriver) MarshalJSON() ([]byte, error) {
 	return json.Marshal(er.errors)

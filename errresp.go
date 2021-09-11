@@ -18,6 +18,8 @@ type ErrorResponse interface {
 	Errors() map[string]map[string]string
 	// String convert to string
 	String() string
+	// Messages get error messages only without errors
+	Messages() map[string][]string
 	// MarshalJSON convert to json
 	MarshalJSON() ([]byte, error)
 }
