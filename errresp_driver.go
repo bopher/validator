@@ -73,6 +73,18 @@ func (er *errorResponseDriver) Messages() map[string][]string {
 	return msg
 }
 
+// Rules get error rules only without error message
+func (er *errorResponseDriver) Rules() map[string][]string {
+	var msg map[string][]string
+	for f, errs := range er.errors {
+		msg[f] = make([]string, 0)
+		for rule := range errs {
+			msg[f] = append(msg[f], rule)
+		}
+	}
+	return msg
+}
+
 // MarshalJSON convert to json
 func (er *errorResponseDriver) MarshalJSON() ([]byte, error) {
 	return json.Marshal(er.errors)

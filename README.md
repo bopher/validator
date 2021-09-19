@@ -97,6 +97,15 @@ Get error messages only without error key
 Messages() map[string][]string
 ```
 
+##### Rules
+
+Get error rules only without error message.
+
+```go
+// Signature:
+Rules() map[string][]string
+```
+
 ##### MarshalJSON
 
 Convert error response to json.

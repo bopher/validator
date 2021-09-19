@@ -20,6 +20,8 @@ type ErrorResponse interface {
 	String() string
 	// Messages get error messages only without error key
 	Messages() map[string][]string
+	// Rules get error rules only without error message
+	Rules() map[string][]string
 	// MarshalJSON convert to json
 	MarshalJSON() ([]byte, error)
 }
