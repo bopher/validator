@@ -73,7 +73,7 @@ func IsUUID(uuid string) bool {
 
 // IsJDate check if string is valid jalali date jalali date validator
 func IsJDate(jDate string) bool {
-	if _, err := utils.JalaliToTime(jDate); err == nil {
+	if d := utils.JalaliToTime(jDate); d != nil {
 		return true
 	}
 	return false
