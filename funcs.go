@@ -6,7 +6,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/bopher/utils"
 	"github.com/gabriel-vasile/mimetype"
 	"github.com/inhies/go-bytesize"
 )
@@ -19,20 +18,23 @@ func IsUsername(username string) bool {
 
 // IsTel check if string is valid tel (IR numbers)
 func IsTel(tel string) bool {
-	r := regexp.MustCompile(`^(\(0\d{2}\) \d{4}-\d{4})|(0\d{10})$`)
-	return r.MatchString(tel)
+	rx := regexp.MustCompile(`[\d]+`)
+	rm := regexp.MustCompile(`^0\d{10}$`)
+	return rm.MatchString(strings.Join(rx.FindAllString(tel, -1), ""))
 }
 
 // IsMobile check if string is valid mobile number (IR numbers)
 func IsMobile(mobile string) bool {
-	r := regexp.MustCompile(`^(\(09\d{2}\) \d{3}-\d{4})|(09\d{9})$`)
-	return r.MatchString(mobile)
+	rx := regexp.MustCompile(`[\d]+`)
+	rm := regexp.MustCompile(`^09\d{9}$`)
+	return rm.MatchString(strings.Join(rx.FindAllString(mobile, -1), ""))
 }
 
 // IsPostalcode check if string is valid postal code
 func IsPostalcode(postalCode string) bool {
-	r := regexp.MustCompile(`^(\d{5}-\d{5})|(\d{10})$`)
-	return r.MatchString(postalCode)
+	rx := regexp.MustCompile(`[\d]+`)
+	rm := regexp.MustCompile(`^\d{10}$`)
+	return rm.MatchString(strings.Join(rx.FindAllString(postalCode, -1), ""))
 }
 
 // IsIdentifier check if string is valid identifier
@@ -55,28 +57,22 @@ func IsIDNumber(idNum string) bool {
 
 // ISNationalCode check if string is valid id national code
 func ISNationalCode(idNum string) bool {
-	r := regexp.MustCompile(`^(\d{3}-\d{6}-\d{1})|(\d{10})$`)
-	return r.MatchString(idNum)
+	rx := regexp.MustCompile(`[\d]+`)
+	rm := regexp.MustCompile(`^\d{10}$`)
+	return rm.MatchString(strings.Join(rx.FindAllString(idNum, -1), ""))
 }
 
 // IsCreditCardNumber check if string is valid id credit card number
 func IsCreditCardNumber(num string) bool {
-	r := regexp.MustCompile(`^(\d{4}-\d{4}-\d{4}-\d{4}-\d{4})|(\d{4}-\d{4}-\d{4}-\d{4})|(\d{20})|(\d{16})$`)
-	return r.MatchString(num)
+	rx := regexp.MustCompile(`[\d]+`)
+	rm := regexp.MustCompile(`^(\d{16})|(\d{20})$`)
+	return rm.MatchString(strings.Join(rx.FindAllString(num, -1), ""))
 }
 
 // IsUUID check if string is valid uuid
 func IsUUID(uuid string) bool {
 	r := regexp.MustCompile("^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[8|9|aA|bB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$")
 	return r.MatchString(uuid)
-}
-
-// IsJDate check if string is valid jalali date jalali date validator
-func IsJDate(jDate string) bool {
-	if d := utils.JalaliToTime(jDate); d != nil {
-		return true
-	}
-	return false
 }
 
 // IsIP check if address if a valid ip

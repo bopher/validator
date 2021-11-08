@@ -1,12 +1,16 @@
 package validations
 
 import (
+	"github.com/bopher/jalali"
 	v "github.com/bopher/validator"
 	"github.com/go-playground/validator/v10"
 )
 
 func jalaliValidation(fl validator.FieldLevel) bool {
-	return v.IsJDate(fl.Field().String())
+	if d := jalali.Parse(fl.Field().String()); d != nil {
+		return true
+	}
+	return false
 }
 
 // RegisterJalaliValidation register validations with translations
