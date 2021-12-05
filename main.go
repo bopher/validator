@@ -17,3 +17,10 @@ func NewErrorResponse() ErrorResponse {
 	r.init()
 	return r
 }
+
+// Invalidate generate invalid state for field
+func Invalidate(field, err string) ErrorResponse {
+	e := NewErrorResponse()
+	e.AddError(field, err, "")
+	return e
+}

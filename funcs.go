@@ -39,14 +39,14 @@ func IsPostalcode(postalCode string) bool {
 
 // IsIdentifier check if string is valid identifier
 func IsIdentifier(id string) bool {
-	idf, _ := strconv.Atoi(id)
-	return idf > 0
+	idf, err := strconv.Atoi(id)
+	return err == nil && idf > 0
 }
 
 // IsUnsigned check if string is unsigned number
 func IsUnsigned(num string) bool {
-	n, _ := strconv.Atoi(num)
-	return n >= 0
+	idf, err := strconv.Atoi(num)
+	return err == nil && idf >= 0
 }
 
 // IsIDNumber check if string is valid id number

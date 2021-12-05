@@ -120,6 +120,17 @@ if resp, err := errs.MarshalJSON(); err == nil{
 }
 ```
 
+### Helpers
+
+#### Invalidate
+
+Generate invalid state for field.
+
+```go
+// Signature:
+Invalidate(field, err string) ErrorResponse
+```
+
 ### Validation functions
 
 You can access custom validations by function.
