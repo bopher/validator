@@ -3,7 +3,7 @@ module github.com/bopher/validator
 go 1.17
 
 require (
-	github.com/bopher/jalali v1.1.0
+	github.com/bopher/jalali v1.1.1
 	github.com/bopher/translator v1.1.1
 	github.com/gabriel-vasile/mimetype v1.4.0
 	github.com/go-playground/validator/v10 v10.9.0
