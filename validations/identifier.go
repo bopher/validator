@@ -1,12 +1,14 @@
 package validations
 
 import (
+	"fmt"
+
 	v "github.com/bopher/validator"
 	"github.com/go-playground/validator/v10"
 )
 
 func identifierValidation(fl validator.FieldLevel) bool {
-	return v.IsIdentifier(fl.Field().String())
+	return v.IsIdentifier(fmt.Sprint(fl.Field().Interface()))
 }
 
 // RegisterIdentifierValidation register identifier validator and it translations

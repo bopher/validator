@@ -1,12 +1,14 @@
 package validations
 
 import (
+	"fmt"
+
 	v "github.com/bopher/validator"
 	"github.com/go-playground/validator/v10"
 )
 
 func unsignedValidation(fl validator.FieldLevel) bool {
-	return v.IsUnsigned(fl.Field().String())
+	return v.IsUnsigned(fmt.Sprint(fl.Field().Interface()))
 }
 
 // RegisterUnsignedValidation register validations with translations
