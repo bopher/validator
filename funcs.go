@@ -113,14 +113,13 @@ func ValidateUploadMime(file *multipart.FileHeader, mimes ...string) (bool, erro
 	}
 	defer f.Close()
 
-	var data []byte
-	_, err = f.Read(data)
-	if err != nil {
+	if mime, err := mimetype.DetectReader(f); err != nil {
 		return false, err
+	} else if mime != nil {
+		return mimetype.EqualsAny(mime.String(), mimes...), nil
 	}
 
-	mime := mimetype.Detect(data)
-	return mimetype.EqualsAny(mime.String(), mimes...), nil
+	return false, nil
 }
 
 // ValidateUploadExt check if file upload extension is valid
@@ -131,18 +130,15 @@ func ValidateUploadExt(file *multipart.FileHeader, exts ...string) (bool, error)
 	}
 	defer f.Close()
 
-	var data []byte
-	_, err = f.Read(data)
-	if err != nil {
+	if mime, err := mimetype.DetectReader(f); err != nil {
 		return false, err
-	}
-
-	mime := mimetype.Detect(data)
-
-	for _, ext := range exts {
-		if strings.ToLower(ext) == strings.ToLower(mime.Extension()) {
-			return true, nil
+	} else if mime != nil {
+		for _, ext := range exts {
+			if strings.ToLower(ext) == strings.ToLower(mime.Extension()) {
+				return true, nil
+			}
 		}
 	}
+
 	return false, nil
 }
