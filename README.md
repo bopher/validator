@@ -345,6 +345,26 @@ Validator contains some extra validation commands you can register and use with 
 
 you can find this validations under `github.com/bopher/validator/validations` namespace.
 
+### AlphaNum
+
+Check if field is a string contains alpha and number. You can allow extra character by listing them in param.
+
+```go
+type Person struct{
+    Field string `validate:"alnum=' -_'"`
+}
+```
+
+### AlphaNumFa
+
+Check if field is a string contains alpha (en and fa) and number (en only). You can allow extra character by listing them in param.
+
+```go
+type Person struct{
+    Field string `validate:"alnumfa=' '"`
+}
+```
+
 ### Credit Card
 
 Check if field is a credit card number.
