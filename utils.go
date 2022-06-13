@@ -8,7 +8,7 @@ import (
 	"golang.org/x/text/message"
 )
 
-func parseFieldTag(s interface{}, field string, tag string) (string, bool) {
+func parseFieldTag(s any, field string, tag string) (string, bool) {
 	t := reflect.TypeOf(s)
 	if t.Kind() == reflect.Struct {
 		if f, ok := t.FieldByName(field); ok {
@@ -20,7 +20,7 @@ func parseFieldTag(s interface{}, field string, tag string) (string, bool) {
 	return "", false
 }
 
-func suffixedTagOrFallback(s interface{}, field string, tag string, suffix string, fallback string) string {
+func suffixedTagOrFallback(s any, field string, tag string, suffix string, fallback string) string {
 	if v, ok := parseFieldTag(s, field, tag+"_"+suffix); ok {
 		return v
 	} else if v, ok := parseFieldTag(s, field, tag); ok {

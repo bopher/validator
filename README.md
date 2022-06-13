@@ -266,7 +266,7 @@ Generate translation for struct. used internally by validator!
 
 ```go
 // Signature:
-TranslateStruct(s interface{}, locale string, key string, field string, placeholders map[string]string) string
+TranslateStruct(s any, locale string, key string, field string, placeholders map[string]string) string
 ```
 
 ### Struct
@@ -277,7 +277,7 @@ Validates a structs exposed fields, and automatically validates nested structs, 
 
 ```go
 // Signature:
-Struct(s interface{}) ErrorResponse
+Struct(s any) ErrorResponse
 ```
 
 ### StructExcept
@@ -288,7 +288,7 @@ Validates all fields except the ones passed in.
 
 ```go
 // Signature:
-StructExcept(s interface{}, fields ...string) ErrorResponse
+StructExcept(s any, fields ...string) ErrorResponse
 ```
 
 ### StructPartial
@@ -299,7 +299,7 @@ Validates the fields passed in only, ignoring all others.
 
 ```go
 // Signature:
-StructPartial(s interface{}, fields ...string) ErrorResponse
+StructPartial(s any, fields ...string) ErrorResponse
 ```
 
 ### Var
@@ -319,7 +319,7 @@ ValidatorParam fields:
 
 ```go
 // Signature:
-Var(params ValidatorParam, field interface{}, tag string, messages map[string]string) ErrorResponse
+Var(params ValidatorParam, field any, tag string, messages map[string]string) ErrorResponse
 ```
 
 **Note:** You can pass a message list to override default translation messages.
@@ -336,7 +336,7 @@ Validates a single variable, against another variable/field's value using tag st
 
 ```go
 // Signature:
-VarWithValue(params ValidatorParam, field interface{}, other interface{}, tag string, messages map[string]string) ErrorResponse
+VarWithValue(params ValidatorParam, field any, other any, tag string, messages map[string]string) ErrorResponse
 ```
 
 ## Extra Validation Commands
